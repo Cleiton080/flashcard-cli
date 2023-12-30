@@ -8,9 +8,9 @@ def card():
 
 
 @card.command()
-@click.option('--deck-id', help='Deck ID for the card')
-@click.option('--front', help='Front side of the card')
-@click.option('--back', help='Back side of the card')
+@click.option('--deck-id', help='Deck ID for the card', required=True)
+@click.option('--front', help='Front side of the card', required=True)
+@click.option('--back', help='Back side of the card', required=True)
 def create(deck_id, front, back):
     payload = {'deck_id': deck_id, 'front': front, 'back': back}
 
@@ -25,7 +25,7 @@ def create(deck_id, front, back):
         click.echo('Failed to create card')
 
 @card.command()
-@click.option('--card-id', help='Card ID to describe')
+@click.option('--card-id', help='Card ID to describe', required=True)
 def describe(card_id):
     response = retry_request(
         f'/card/{card_id}',
@@ -53,7 +53,7 @@ def list(review):
         click.echo('Failed to describe card')
 
 @card.command()
-@click.option('--card-id', help='Card ID to remove')
+@click.option('--card-id', help='Card ID to remove', required=True)
 def remove(card_id):
     response = retry_request(
         f'/card/{card_id}',
@@ -66,9 +66,9 @@ def remove(card_id):
         click.echo('Failed to remove card')
 
 @card.command()
-@click.option('--card-id', help='Card ID to update')
-@click.option('--front', help='New front side of the card')
-@click.option('--back', help='New back side of the card')
+@click.option('--card-id', help='Card ID to update', required=True)
+@click.option('--front', help='New front side of the card', required=True)
+@click.option('--back', help='New back side of the card', required=True)
 def update(card_id, front, back):
     payload = {'front': front, 'back': back}
 

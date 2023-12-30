@@ -7,7 +7,7 @@ def deck():
     pass
 
 @deck.command()
-@click.option('--name', help='Deck name')
+@click.option('--name', help='Deck name', required=True)
 def create(name):
     payload = {'name': name}
 
@@ -23,7 +23,7 @@ def create(name):
 
 
 @deck.command()
-@click.option('--deck-id', help='Deck ID')
+@click.option('--deck-id', help='Deck ID', required=True)
 def describe(deck_id):
     result = retry_request(
         f'/deck/{deck_id}',
@@ -51,7 +51,7 @@ def list():
 
 
 @deck.command()
-@click.option('--deck-id', help='Deck ID')
+@click.option('--deck-id', help='Deck ID', required=True)
 def remove(deck_id):
     result = retry_request(
         f'/deck/{deck_id}',
@@ -64,8 +64,8 @@ def remove(deck_id):
         click.echo('Failed to remove deck after multiple attempts')
 
 @deck.command()
-@click.option('--deck-id', help='Deck ID')
-@click.option('--name', help='Deck new name')
+@click.option('--deck-id', help='Deck ID', required=True)
+@click.option('--name', help='Deck new name', required=True)
 def update(deck_id, name):
     payload = {'name': name}
     

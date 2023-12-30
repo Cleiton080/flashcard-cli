@@ -7,9 +7,9 @@ def review():
     pass
 
 @review.command()
-@click.option('--delay-response', help='Delay for response')
-@click.option('--card-id', help='Card ID for the review')
-@click.option('--review-answer', help='Answer for the review')
+@click.option('--delay-response', help='Delay for response', required=True)
+@click.option('--card-id', help='Card ID for the review', required=True)
+@click.option('--review-answer', help='Answer for the review', required=True)
 def create(delay_response, card_id, review_answer):
     payload = {
         'delay_response': delay_response,
@@ -42,7 +42,7 @@ def list():
         click.echo('Failed to retrieve reviews')
 
 @review.command()
-@click.option('--review-id', help='Review ID to describe')
+@click.option('--review-id', help='Review ID to describe', required=True)
 def describe(review_id):
     response = retry_request(
         f'/review/{review_id}',

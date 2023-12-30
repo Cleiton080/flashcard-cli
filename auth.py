@@ -6,7 +6,7 @@ from utils import retry_request, save_token, remove_token
 def auth():
     pass
 
-@click.option('--username', help='Username for authentication')
+@click.option('--username', help='Username for authentication', required=True)
 @click.option('--password-stdin', is_flag=True, help='Read password from stdin')
 @auth.command()
 def login(username, password_stdin):
