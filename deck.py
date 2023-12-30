@@ -17,7 +17,7 @@ def create(name):
         token=load_token(),
     )
     if result:
-        click.echo('Deck created successfully')
+        click.echo(result)
     else:
         click.echo('Failed to create deck after multiple attempts')
 

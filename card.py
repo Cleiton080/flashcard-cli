@@ -20,7 +20,7 @@ def create(deck_id, front, back):
         token=load_token(),
     )
     if response:
-        click.echo('Card created successfully')
+        click.echo(response)
     else:
         click.echo('Failed to create card')
 
