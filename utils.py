@@ -6,7 +6,7 @@ import os
 import sys
 
 def make_request(uri, payload, method = 'POST', token=None):
-    BASE_URL = os.getenv('BASE_URL', 'http://localhost:5000/api/v1')
+    BASE_URL = os.getenv('FLASHCARD_BASE_URL', 'http://localhost:5000/api/v1')
     url = f'{BASE_URL}/{uri}'
     headers = {}
     response = None
